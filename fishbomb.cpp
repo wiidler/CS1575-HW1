@@ -69,9 +69,8 @@ void findBombSpot(const int test, const int & rows, const int & columns){
 		lineSum = 0;
 	}
 
-
+	// Find most fish cross
 	int fishBombed = 0;
-
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < columns; j++) {
 			if ((rowSum[i] + columnSum[j] - pond[i][j]) > fishBombed) 
@@ -82,9 +81,10 @@ void findBombSpot(const int test, const int & rows, const int & columns){
 			}
 		}
 	}
-	
+	// Output results
 	cout << "#" << test << ": at (" << bestX << ", " << bestY << ") Bender catches " << fishBombed << " fish." << endl;
-
+	
+	// Eliminate memory leaks
 	for(int i = 0; i < rows; i++){
 		delete[] pond[i];
 	}
